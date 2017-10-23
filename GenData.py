@@ -90,8 +90,8 @@ def main():
 
     print "\n\ntraining complete !!\n"
 
-    np.savetxt("classifications.txt", npaClassifications)           # write flattened images to file
-    np.savetxt("flattened_images.txt", npaFlattenedImages)          #
+    np.savetxt("classifications_plate.txt", npaClassifications)           # write flattened images to file
+    np.savetxt("flattened_images_plate.txt", npaFlattenedImages)          #
 
     cv2.destroyAllWindows()             # remove windows from memory
 
