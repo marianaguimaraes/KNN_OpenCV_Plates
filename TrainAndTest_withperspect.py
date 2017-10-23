@@ -187,7 +187,7 @@ while(1):
     validContoursWithData.sort(key = operator.attrgetter("intRectX"))         # sort contours from left to right
 
     strFinalString = ""         # declare final string, this will have the final number sequence by the end of the program
-
+    i = 0
     for contourWithData in validContoursWithData:            # for each contour
                                                 # draw a green rect around the current char
         cv2.rectangle(img4,                                        # draw rectangle on original testing image
@@ -208,14 +208,17 @@ while(1):
         retval, npaResults, neigh_resp, dists = kNearest.findNearest(npaROIResized, k = 1)     # call KNN function find_nearest
 
         strCurrentChar = str(chr(int(npaResults[0][0])))                                             # get character from results
-
+        
         strFinalString = strFinalString + strCurrentChar            # append current char to full string
+        i =i +1
     # end for
+	str1 = strFinalString
+	list1 = list(str1)
+    if str1[0] == '4' : 		
+		list1[0] = 'A'
+		str1 = ''.join(list1)
+    print "\n" + "Placa numero: "+ str1 + "\n"                  # show the full string
 
-    print "\n" + "Placa numero: "+ strFinalString + "\n"                  # show the full string
-
-       
-    
     mask2 = cv2.resize(mask2, (600, 200))
     img4 = cv2.resize(img4, (600, 200))
     cv2.imshow("Tratativa", mask2)
